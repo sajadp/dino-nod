@@ -4,10 +4,11 @@ interface GameOverScreenProps {
   score: number;
   highScore: number;
   onRestart: () => void;
+  onShowLeaderboard: () => void;
   userName: string;
 }
 
-const GameOverScreen: React.FC<GameOverScreenProps> = ({ score, highScore, onRestart, userName }) => {
+const GameOverScreen: React.FC<GameOverScreenProps> = ({ score, highScore, onRestart, onShowLeaderboard, userName }) => {
   const shareCardRef = useRef<HTMLDivElement>(null);
   const [isSharing, setIsSharing] = useState(false);
 
@@ -97,8 +98,8 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({ score, highScore, onRes
         </div>
         
         {/* Middle Section */}
-        <div className="text-center">
-            <div className="text-9xl mb-2 drop-shadow-lg">{rankIcon}</div>
+        <div className="text-center" style={{ transform: 'translateY(-85px)' }}>
+            <div className="text-9xl mb-4 drop-shadow-lg" style={{ transform: 'translateY(-30px)' }}>{rankIcon}</div>
             <p className="text-5xl font-extrabold text-white">{rankTitle}</p>
         </div>
 
@@ -106,14 +107,14 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({ score, highScore, onRes
         <div className="w-full flex flex-col items-center">
             <div className="w-full bg-black/20 backdrop-blur-sm p-6 rounded-2xl border border-white/10 text-center mb-6">
                 <p className="text-sm font-medium text-gray-400 uppercase tracking-widest">Your Score</p>
-                <div className="text-9xl font-black text-yellow-300 [text-shadow:_0_4px_8px_rgba(0,0,0,0.5)] my-1">{score}</div>
+                <div style={{ transform: 'translateY(-40px)' }} className="text-9xl font-black text-yellow-300 [text-shadow:_0_4px_8px_rgba(0,0,0,0.5)] my-1">{score}</div>
                 <p className="text-lg text-gray-300">High Score: {highScore}</p>
             </div>
             
             <div className="text-center">
                 <p className="text-md font-light">Think you can nod better?</p>
                 <div className="mt-2 text-md font-semibold bg-green-500 text-white py-2 px-4 rounded-lg shadow-lg">
-                    Play at Dino-Nod.Game
+                    <div style={{ transform: 'translateY(-10px)' }}>Play at Dino-Nod.Game</div>
                 </div>
             </div>
         </div>
@@ -143,6 +144,12 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({ score, highScore, onRes
           {isSharing ? 'Sharing...' : 'Share Score'}
         </button>
       </div>
+       <button
+          onClick={onShowLeaderboard}
+          className="w-full px-6 py-3 text-lg font-bold text-white bg-indigo-500 rounded-lg hover:bg-indigo-600 focus:outline-none focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-700 transition-transform transform hover:scale-105"
+        >
+          🏆 View Leaderboard
+        </button>
     </div>
   );
 };

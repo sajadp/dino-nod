@@ -2,6 +2,7 @@ export enum GameState {
   MainMenu,
   Playing,
   GameOver,
+  Leaderboard,
 }
 
 export enum Theme {
@@ -16,4 +17,5 @@ export interface ObstacleState {
   height: number;
   y: number;
   passed: boolean;
+  type: 'pillar' | 'pit' | 'flying' | 'heart' | 'coin' | 'bomb';
 }

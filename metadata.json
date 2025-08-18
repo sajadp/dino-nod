@@ -1,5 +1,5 @@
 {
-  "requestFramePermissions": [
-    "camera"
-  ]
+  "requestFramePermissions": [],
+  "name": "Dino Nod: Neck Gymnastics Game",
+  "description": ""
 }
